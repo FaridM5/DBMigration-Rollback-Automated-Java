@@ -3,12 +3,35 @@
  */
 package a1.db.migration.faridm5;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        String url = "jdbc:postgresql://localhost:5432/postgres";
+        String user = "postgres";
+        String password = "12345";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            System.out.println("Connected to PostgreSQL database!");
+
+            // Create a statement
+            try (Statement statement = connection.createStatement()) {
+                // Execute a query
+                try (ResultSet resultSet = statement.executeQuery("SELECT * FROM test_table")) {
+                    // Process the result set
+                    while (resultSet.next()) {
+                        System.out.println("Column 1: " + resultSet.getString(1));
+                        System.out.println("Column 2: " + resultSet.getString(2));
+                        // Add more columns as needed
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Database connection error: " + e.getMessage());
+        }
     }
 }
