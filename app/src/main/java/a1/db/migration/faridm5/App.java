@@ -8,12 +8,23 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner; // Import Scanner class for reading input
 
 public class App {
     public static void main(String[] args) {
-        String url = "jdbc:postgresql://localhost:5432/postgres";
-        String user = "postgres";
-        String password = "12345";
+        Scanner scanner = new Scanner(System.in); // Create a Scanner object for reading input
+
+        System.out.println("Enter database name: ");
+        String dbName = scanner.nextLine(); // Read user input for database name
+
+        System.out.println("Enter username: ");
+        String user = scanner.nextLine(); // Read user input for username
+
+        System.out.println("Enter password: ");
+        String password = scanner.nextLine(); // Read user input for password
+
+        // Update the URL to include the user-specified database name
+        String url = "jdbc:postgresql://localhost:5432/" + dbName; // Adjusted to include dbName
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -32,6 +43,8 @@ public class App {
             }
         } catch (SQLException e) {
             System.err.println("Database connection error: " + e.getMessage());
+        } finally {
+            scanner.close(); // Close the scanner
         }
     }
 }

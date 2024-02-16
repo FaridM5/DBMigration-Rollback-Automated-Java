@@ -15,6 +15,11 @@ repositories {
     mavenCentral()
 }
 
+run{
+    // default input stream behaivor is set to non-empty
+    standardInput = System.in
+}
+
 dependencies {
     // Use JUnit test framework.
     testImplementation libs.junit
@@ -37,3 +42,5 @@ application {
     // Define the main class for the application.
     mainClass = 'a1.db.migration.faridm5.App'
 }
+
+
