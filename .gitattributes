@@ -2,11 +2,13 @@
 # https://help.github.com/articles/dealing-with-line-endings/
 #
 # Linux start script should use lf
-/gradlew        text eol=lf
+/gradlew text eol=lf
 
 # These are Windows script files and should use crlf
-*.bat           text eol=crlf
+*.bat text eol=crlf
 
 # Java files should use LF line endings
 *.java text eol=lf
 
+# correct line endings for their respective operating systems
+*.sh text eol=lf
