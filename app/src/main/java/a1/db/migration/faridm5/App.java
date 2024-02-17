@@ -22,9 +22,13 @@ public class App {
             Statement statement = connection.createStatement();
 
             if (TableChecker.checkTables(statement)) {
-                System.out.println("The tables \"STUDENTS\" and \"INTERESTS\" are already exist. Do you want to recreate the tables? (Y/N)");
-                String input = scanner.nextLine();
-                if ("Y".equalsIgnoreCase(input)) {
+                System.out.println("The tables \"STUDENTS\" and \"INTERESTS\" already exist. Do you want to recreate the tables? (Y/N)");
+                String input = scanner.nextLine().toUpperCase(); // Convert input to uppercase for case-insensitive comparison
+                while (!input.equals("Y") && !input.equals("N")) {
+                    System.out.println("Invalid input. Please enter 'Y' or 'N':");
+                    input = scanner.nextLine().toUpperCase();
+                }
+                if ("Y".equals(input)) {
                     TableCreator.createTables(statement);
                     DataInserter.insertData(statement);
                 }
@@ -34,6 +38,27 @@ public class App {
             }
 
             TablePrinter.printTables(statement);
+
+            // Actual part
+            System.out.println("What do you want to do?: migrate / rollback");
+            String action = scanner.nextLine().trim().toLowerCase();
+
+            switch (action) {
+                case "migrate":
+                    Migration.migrate(connection);
+                    break;
+                case "rollback":
+                     System.out.println("Will be implemented!");
+//                    if (OldTablesChecker.checkForOldTables(connection)) {
+//                        Rollback.rollback(connection);
+//                    } else {
+//                        System.out.println("No migration has been performed previously to rollback.");
+//                    }
+                    break;
+                default:
+                    System.out.println("Invalid action. Please choose 'migrate' or 'rollback'.");
+                    break;
+            }
 
         } catch (Exception e) {
             System.out.println("Something went wrong. Please restart the app :)");
