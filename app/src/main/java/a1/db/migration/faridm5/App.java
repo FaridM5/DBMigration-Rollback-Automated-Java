@@ -67,19 +67,35 @@ public class App {
             TablePrinter.printTables(statement);
 
             // Actual part
-            System.out.println("What do you want to do?: migrate / rollback");
-            String action = scanner.nextLine().trim().toLowerCase();
+//            System.out.println("What do you want to do?: migrate / rollback");
+//            String action = scanner.nextLine().trim().toLowerCase();
 
-            switch (action) {
-                case "migrate":
-                    Migration.migrate(connection);
-                    break;
-                case "rollback":
-                     System.out.println("Will be implemented!");
-                    break;
-                default:
-                    System.out.println("Invalid action. Please choose 'migrate' or 'rollback'.");
-                    break;
+            String action;
+            boolean end = false;
+
+            while (!end) {
+                System.out.println("What do you want to do?: migrate / rollback / end");
+                action = scanner.nextLine().trim().toLowerCase();
+
+                switch (action) {
+                    case "migrate":
+                        Migration.migrate(connection);
+                        System.out.println("The tables after migration:");
+                        TablePrinter.printTables(statement);
+                        break;
+                    case "rollback":
+                        Rollback.rollback(connection);
+                        System.out.println("The tables after rollback:");
+                        TablePrinter.printTables(statement);
+                        break;
+                    case "end":
+                        System.out.println("Ending program.");
+                        end = true; // Set end to true to exit the loop
+                        break;
+                    default:
+                        System.out.println("Invalid action. Please choose 'migrate', 'rollback', or 'end'.");
+                        break;
+                }
             }
 
         } catch (Exception e) {
