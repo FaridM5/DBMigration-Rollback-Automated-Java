@@ -1,23 +1,50 @@
 package a1.db.migration.faridm5;
-
 import java.sql.Connection;
 import java.sql.Statement;
+import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class App {
+    private static final String CONFIG_FILE = "config.properties";
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        // Load configuration
+        Properties config = new Properties();
+        try {
+            config.load(new FileInputStream(CONFIG_FILE));
+        } catch (IOException e) {
+            System.out.println("Error loading configuration: " + e.getMessage());
+        }
 
-        System.out.println("Enter username in postgres: ");
-        String user = scanner.nextLine();
+        String editConfig;
+        do {
+            System.out.println("Editing config file: (+/-)?");
+            editConfig = scanner.nextLine().trim();
+        } while (!editConfig.equals("+") && !editConfig.equals("-"));
 
-        System.out.println("Enter password in postgres: ");
-        String password = scanner.nextLine();
+        if (editConfig.equals("+")) {
+            System.out.println("Enter username for the database connection:");
+            String username = scanner.nextLine().trim();
+            config.setProperty("username", username);
 
-        System.out.println("Enter database name to connect: ");
-        String dbName = scanner.nextLine();
+            System.out.println("Enter password for the database connection:");
+            String password = scanner.nextLine().trim();
+            config.setProperty("password", password);
+            try {
+                config.store(new FileOutputStream(CONFIG_FILE), null);
+            } catch (IOException e) {
+                System.out.println("Error saving configuration: " + e.getMessage());
+            }
+        }
+        System.out.println("Enter database name to connect:");
+        String dbName = scanner.nextLine().trim();
 
         try {
+            String user = config.getProperty("username");
+            String password = config.getProperty("password");
             Connection connection = DatabaseUtils.getConnection(dbName, user, password);
             Statement statement = connection.createStatement();
 
@@ -49,11 +76,6 @@ public class App {
                     break;
                 case "rollback":
                      System.out.println("Will be implemented!");
-//                    if (OldTablesChecker.checkForOldTables(connection)) {
-//                        Rollback.rollback(connection);
-//                    } else {
-//                        System.out.println("No migration has been performed previously to rollback.");
-//                    }
                     break;
                 default:
                     System.out.println("Invalid action. Please choose 'migrate' or 'rollback'.");
