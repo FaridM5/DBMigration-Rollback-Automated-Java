@@ -54,9 +54,12 @@ Reference:
 <i class="fa fa-picture-o" style="font-size:13px"></i> The process described as a model. If you want to access the picture: <a href="https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/0ea8b09b-6118-4153-b3ef-49db977b8752" target="_blank">Click!</a><br>![ModelForStrategy](https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/0ea8b09b-6118-4153-b3ef-49db977b8752)
 
 <h4><i class="fa fa-bookmark" style="font-size:13px"></i> How the program works in logic:</h4>
-<ul><i class="fa fa-wrench" style="font-size:13px"> ➤Program asks the user if he/she wants to edit the configuration file which is used to connect to the database</i><ol><i class="fa fa-toggle-on" style="font-size:13px"> ➥If the user presses "+", then the program will ask for the username and password, first to save into config file to retrieve it from there automatically for further runs </i>
-<i class="fa fa-toggle-off" style="font-size:13px">➥If the user presses "-", then the program will directly refer to the config file to retrieve the value from there (<i>null</i> by default)</i>
-<i class="fa fa-warning" style="font-size:13px"> ➥User is repeatedly asked to put either "+" or "-" untill there is no invalid parameter provided </i></ol>
+<ul><i class="fa fa-wrench" style="font-size:13px"> ➤Program asks the user if he/she wants to edit the configuration file which is used to connect to the database</i><ol><i class="fa fa-toggle-on" style="font-size:13px">
+➥If the user presses "+", then the program will ask for the username and password, first to save into config file to retrieve it from there automatically for further runs </i>
+<i class="fa fa-toggle-off" style="font-size:13px">
+<br>
+➥If the user presses "-", then the program will directly refer to the config file to retrieve the value from there (<i>null</i> by default)</i>
+<br><i class="fa fa-warning" style="font-size:13px"> ➥User is repeatedly asked to put either "+" or "-" untill there is no invalid parameter provided </i></ol>
 <i class="fa fa-wrench" style="font-size:13px"> ➤Program asks the user to provide database name for the connection. <i>This will be asked every time in case you would like to have the operation in another database.</i></i>
 <i class="fa fa-wrench" style="font-size:13px"> ➤Program connectst to the database using the credentials provided inside config file and database name provided to the terminal.</i>
 <ol><i class="fa fa-warning" style="font-size:13px"> ➥User is warned about the connection failure <i>(if credentials are incorrect or there is a problem with connection)</i></i></ol>
