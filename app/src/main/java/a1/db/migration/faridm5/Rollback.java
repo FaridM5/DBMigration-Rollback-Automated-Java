@@ -19,8 +19,10 @@ public class Rollback {
                 statement.execute("ALTER TABLE INTERESTS_OLD RENAME TO INTERESTS");
 
                 System.out.println("Rollback completed successfully. Tables restored to their original state.");
+                System.out.println("The tables after rollback:");
             } else {
                 System.out.println("Rollback cannot be performed as the original tables do not exist or migration has not been done before.");
+                System.out.println("The tables:");
             }
         } catch (SQLException e) {
             System.out.println("An error occurred during the rollback: " + e.getMessage());

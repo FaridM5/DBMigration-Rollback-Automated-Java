@@ -11,11 +11,6 @@ public class OldTablesChecker {
         String studentsTableName = "STUDENTS_OLD".toLowerCase(); //
         String interestsTableName = "INTERESTS_OLD".toLowerCase(); //
 
-//        try {
-//            DatabaseMetaData dbMetaData = connection.getMetaData();
-//            ResultSet studentsOld = dbMetaData.getTables(null, null, "STUDENTS_OLD", null);
-//            ResultSet interestsOld = dbMetaData.getTables(null, null, "INTERESTS_OLD", null);
-//            return studentsOld.next() && interestsOld.next();
         try {
             DatabaseMetaData dbMetaData = connection.getMetaData();
             try (ResultSet studentsOld = dbMetaData.getTables(null, schema, studentsTableName, null);

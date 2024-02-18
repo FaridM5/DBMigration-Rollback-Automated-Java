@@ -66,10 +66,6 @@ public class App {
 
             TablePrinter.printTables(statement);
 
-            // Actual part
-//            System.out.println("What do you want to do?: migrate / rollback");
-//            String action = scanner.nextLine().trim().toLowerCase();
-
             String action;
             boolean end = false;
 
@@ -80,12 +76,10 @@ public class App {
                 switch (action) {
                     case "migrate":
                         Migration.migrate(connection);
-                        System.out.println("The tables after migration:");
                         TablePrinter.printTables(statement);
                         break;
                     case "rollback":
                         Rollback.rollback(connection);
-                        System.out.println("The tables after rollback:");
                         TablePrinter.printTables(statement);
                         break;
                     case "end":
