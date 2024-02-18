@@ -21,10 +21,10 @@
 <li>Download Gradle<br></li>
 <li>Download an IDEA</li>
 <li>Download ay package/JAR file or any other things to insert into IDEA</li>
-<br>
-<li>Go through several steps to run the app</li><br>
-Insert your postgres credentials every time
-Write a command to run different scripts/programs</
+
+<li>Go through several steps to run the app</li>
+<li>Insert your postgres credentials every time
+Write a command to run different scripts/programs</li>
 
 </ul>
 <p style=font-size:13px;>Just you, and your terminal are required simply to run the app. <i class="fa fa-smile-o" style="font-size:13px;color:black"></i></p>
@@ -41,18 +41,21 @@ Reference:
 [Prisma's Data Guide](https://www.prisma.io/dataguide/types/relational/expand-and-contract-pattern#:~:text=The%20expand%20and%20contract%20pattern%20is%20a%20process%20that%20database,data%20structure%20without%20affecting%20uptime.)
 - **Description:** The expand and contract pattern is a process that database administrators and software developers can use to transition data from an old data structure to a new data structure without affecting uptime. It works by applying changes through a series of discrete steps designed to introduce the new structure in the background, prepare the data for live usage, and then switch over to the new structure seamlessly. Beyond just migrating data and clients to a new data structure, the expand and contract pattern is also helpful in that it allows you to rollback changes easily at most points in the process if something doesn't go as planned or if your requirements change.
 
-<i class="fa fa-book" style="font-size:13px"></i>
+<br>
+
 Reference:
 [Tim Wellhausen](https://www.tim-wellhausen.de/papers/ExpandAndContract/ExpandAndContract.html)
 - **Description:** Implement breaking changes in multiple steps so that each individual step does not break the system and can be reverted. First, expand the system by adding the new structure to the database. Then migrate the existing data into the new structure while the system redundantly writes into both the old and the new structure. After the migration is done, contract the system to remove the old data structure and the old code.
 <i>Note that we can keep the old versions as backup to revert the changes for preventing any system breaks</i>
+<br>
+<br>
 
 ![TimWellReferencePicture](https://www.tim-wellhausen.de/papers/ExpandAndContract/Schritte-geschnitten.svg)
 
 <i class="fa fa-picture-o" style="font-size:13px"></i> The process described as a model. If you want to access the picture: <a href="https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/0ea8b09b-6118-4153-b3ef-49db977b8752" target="_blank">Click!</a><br>![ModelForStrategy](https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/0ea8b09b-6118-4153-b3ef-49db977b8752)
 
 <h4><i class="fa fa-bookmark" style="font-size:13px"></i> How the program works in logic:</h4>
-<ol><i class="fa fa-wrench" style="font-size:13px"> Program asks the user if he/she wants to edit the configuration file which is used to connect to the database</i><ol><i class="fa fa-toggle-on" style="font-size:13px"> If the user presses "+", then the program will ask for the username and password, first to save into config file to retrieve it from there automatically for further runs </i>
+<ul><i class="fa fa-wrench" style="font-size:13px"> ➤Program asks the user if he/she wants to edit the configuration file which is used to connect to the database</i><ol><i class="fa fa-toggle-on" style="font-size:13px"> If the user presses "+", then the program will ask for the username and password, first to save into config file to retrieve it from there automatically for further runs </i>
 <i class="fa fa-toggle-off" style="font-size:13px">If the user presses "-", then the program will directly refer to the config file to retrieve the value from there (<i>null</i> by default)</i>
 <i class="fa fa-warning" style="font-size:13px"> User is repeatedly asked to put either "+" or "-" untill there is no invalid parameter provided </i></ol>
 <i class="fa fa-wrench" style="font-size:13px"> Program asks the user to provide database name for the connection. <i>This will be asked every time in case you would like to have the operation in another database.</i></i>
@@ -73,7 +76,8 @@ Reference:
 <i class="fa fa-database" style="font-size:13px"><i> rollback</i> to call for the rollback class to revert the changes made</i>
 <ol><i class="fa fa-warning" style="font-size:13px"> User is warned about error happenend during the rollback process if there is any <i>(with the specific error message)</i>.</i></ol>
 <i class="fa fa-warning" style="font-size:13px"> User is repeatedly asked to put one of these: <i>"end"</i>, <i>"migrate"</i>, <i>"rollback"</i> untill there is no invalid parameter provided </i>
-</ol></ol>
+</ol></ul>
+
 <h4><i class="fa fa-bookmark" style="font-size:13px"></i> How to run the program?:</h4><ol>
 <i>Each picture will be provided by the drive if there is any issue</i>
 
