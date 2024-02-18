@@ -60,21 +60,22 @@ Reference:
 <br>
 ➥If the user presses "-", then the program will directly refer to the config file to retrieve the value from there (<i>null</i> by default)</i>
 <br><i class="fa fa-warning" style="font-size:13px"> ➥User is repeatedly asked to put either "+" or "-" untill there is no invalid parameter provided </i></ol>
-<i class="fa fa-wrench" style="font-size:13px"> ➤Program asks the user to provide database name for the connection. <i>This will be asked every time in case you would like to have the operation in another database.</i></i>
+<i class="fa fa-wrench" style="font-size:13px"> <br>
+➤Program asks the user to provide database name for the connection. <i>This will be asked every time in case you would like to have the operation in another database.</i></i>
 <i class="fa fa-wrench" style="font-size:13px"> ➤Program connectst to the database using the credentials provided inside config file and database name provided to the terminal.</i>
 <ol><i class="fa fa-warning" style="font-size:13px"> ➥User is warned about the connection failure <i>(if credentials are incorrect or there is a problem with connection)</i></i></ol>
 <i class="fa fa-wrench" style="font-size:13px"> ➤Program looks for the tables named as <i>"STUDENTS"</i> and <i>"INTERESTS"</i>:</i>
 <ol><i class="fa fa-toggle-on" style="font-size:13px"> ➥If the program detects the tables named as <i>"STUDENTS"</i> and <i>"INTERESTS"</i>, then it aks to drop and recreate or just keep the tables. <i>"Y"</i> to recreate, <i>"N"</i> to skip.</i>
-<i class="fa fa-toggle-off" style="font-size:13px"> ➥If the program do not detects the tables named as <i>"STUDENTS"</i> and <i>"INTERESTS"</i>, then it just creates the tables.</i>
-<i class="fa fa-warning" style="font-size:13px"> ➥User is repeatedly asked to put either "Y" or "N" untill there is no invalid parameter provided </i>
+<i class="fa fa-toggle-off" style="font-size:13px"> <br>➥If the program do not detects the tables named as <i>"STUDENTS"</i> and <i>"INTERESTS"</i>, then it just creates the tables.</i>
+<i class="fa fa-warning" style="font-size:13px"> <br>➥User is repeatedly asked to put either "Y" or "N" untill there is no invalid parameter provided </i>
 </ol>
 <i class="fa fa-wrench" style="font-size:13px"> ➤Program prints the tables named as  <i>"STUDENTS"</i> and <i>"INTERESTS"</i>. <i>The program uses a seperate class which dynamically prints the tables. It is not staticly programmed to print the specific tables.</i></i>
 <ol><i class="fa fa-warning" style="font-size:13px"> ➥User is warned about the error if there is any <i>(with the specific error message)</i></i></ol>
 <i class="fa fa-wrench" style="font-size:13px"> ➤Program asks for the specific action to take:</i>
 <ol><i class="fa fa-database" style="font-size:13px">➥<i> end</i> to stop the running app and leave</i>
-<i class="fa fa-database" style="font-size:13px"> ➥<i> migrate</i> to call for the migration class and perform changes on the database the</i>
+<i class="fa fa-database" style="font-size:13px"> <br>➥<i> migrate</i> to call for the migration class and perform changes on the database the</i>
 <ol><i class="fa fa-sticky-note" style="font-size:13px"> ➧If migration has been performed before and you haven't performed a rollback function before you do the migrate again, then you will get the error which also handles itself. The program clears the action performed after migrate is called second time to avoid unneccessary tables. <i>Just simply perform rollback operation to overcome.</i></i>
-<i class="fa fa-warning" style="font-size:13px"> ➧User is warned about error happenend during the migration process if there is any <i>(with the specific error message)</i>.</i></ol>
+<i class="fa fa-warning" style="font-size:13px"> <br>➧User is warned about error happenend during the migration process if there is any <i>(with the specific error message)</i>.</i></ol>
 <i class="fa fa-database" style="font-size:13px">➥<i> rollback</i> to call for the rollback class to revert the changes made</i>
 <ol><i class="fa fa-warning" style="font-size:13px"> ➧User is warned about error happenend during the rollback process if there is any <i>(with the specific error message)</i>.</i></ol>
 <i class="fa fa-warning" style="font-size:13px"> ➥User is repeatedly asked to put one of these: <i>"end"</i>, <i>"migrate"</i>, <i>"rollback"</i> untill there is no invalid parameter provided </i>
