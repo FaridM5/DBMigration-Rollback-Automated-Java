@@ -11,22 +11,22 @@
 <li><a href="https://www.tim-wellhausen.de/papers/ExpandAndContract/ExpandAndContract.html" target=_blank>Tim Wellhausen</a></li>
 
 <h4><i class="fa fa-bookmark" style="font-size:13px"></i> What applications required from the system:</h3>
-<ol>
-<i class="fa fa-check" style="font-size:13px"> Latest version Java (21)</i>
-
-<i class="fa fa-check" style="font-size:13px"> PostgreSql <i>(recommended to have latest)</i></i>
-</ol>
+<ul>
+<li>Latest version Java (21)</i></li>
+<li>PostgreSql <i>(recommended to have latest)</i></li>
+</ul>
 
 <h4><i class="fa fa-bookmark" style="font-size:13px"></i> You don't need to:</h4>
-<ol>
-<i class="fa fa-times-circle" style="font-size:13px"> Download Gradle</i> <br>
-<i class="fa fa-times-circle" style="font-size:13px"> Download an IDEA</i>
-<i class="fa fa-times-circle" style="font-size:13px"> Download ay package/JAR file or any other things to insert into IDEA</i>
-<br><i class="fa fa-times-circle" style="font-size:13px"> Go through several steps to run the app</i><br>
-<i class="fa fa-times-circle" style="font-size:13px"> Insert your postgres credentials every time</i>
-<i class="fa fa-times-circle" style="font-size:13px"> Write a command to run different scripts/programs</i>
+<ul>
+<li>Download Gradle<br></li>
+<li>Download an IDEA</li>
+<li>Download ay package/JAR file or any other things to insert into IDEA</li>
+<br>
+<li>Go through several steps to run the app</li><br>
+Insert your postgres credentials every time
+Write a command to run different scripts/programs</
 
-</ol>
+</ul>
 <p style=font-size:13px;>Just you, and your terminal are required simply to run the app. <i class="fa fa-smile-o" style="font-size:13px;color:black"></i></p>
 <i style=font-size:13px;>Everything will be handled automatically by:</i>
 
