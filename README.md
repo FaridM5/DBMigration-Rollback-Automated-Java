@@ -149,7 +149,7 @@ We just finished running part of the app which is as easy as it is and do not re
 
 </ol>
 
-
+**Note:** The main process goes inside of the system application. Before we move to the new system, we tell the system to write to both new and old databases. After we decide on going into the new schema, we again refer to the application to change the write location and avoid writing to the old database (<i>and any other actions</i>). The process I illustrated in the project is how the database part can be done without the help of system configurations: <i>to ask applicaiton where to write and from where to read</i>
 
 
 
