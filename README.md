@@ -48,40 +48,39 @@ Reference:
 - **Description:** Implement breaking changes in multiple steps so that each individual step does not break the system and can be reverted. First, expand the system by adding the new structure to the database. Then migrate the existing data into the new structure while the system redundantly writes into both the old and the new structure. After the migration is done, contract the system to remove the old data structure and the old code.
 <i>Note that we can keep the old versions as backup to revert the changes for preventing any system breaks</i>
 <br>
-<br>
 
 ![TimWellReferencePicture](https://www.tim-wellhausen.de/papers/ExpandAndContract/Schritte-geschnitten.svg)
 
 <i class="fa fa-picture-o" style="font-size:13px"></i> The process described as a model. If you want to access the picture: <a href="https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/0ea8b09b-6118-4153-b3ef-49db977b8752" target="_blank">Click!</a><br>![ModelForStrategy](https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/0ea8b09b-6118-4153-b3ef-49db977b8752)
 
 <h4><i class="fa fa-bookmark" style="font-size:13px"></i> How the program works in logic:</h4>
-<ul><i class="fa fa-wrench" style="font-size:13px"> ➤Program asks the user if he/she wants to edit the configuration file which is used to connect to the database</i><ol><i class="fa fa-toggle-on" style="font-size:13px"> If the user presses "+", then the program will ask for the username and password, first to save into config file to retrieve it from there automatically for further runs </i>
-<i class="fa fa-toggle-off" style="font-size:13px">If the user presses "-", then the program will directly refer to the config file to retrieve the value from there (<i>null</i> by default)</i>
-<i class="fa fa-warning" style="font-size:13px"> User is repeatedly asked to put either "+" or "-" untill there is no invalid parameter provided </i></ol>
-<i class="fa fa-wrench" style="font-size:13px"> Program asks the user to provide database name for the connection. <i>This will be asked every time in case you would like to have the operation in another database.</i></i>
-<i class="fa fa-wrench" style="font-size:13px"> Program connectst to the database using the credentials provided inside config file and database name provided to the terminal.</i>
-<ol><i class="fa fa-warning" style="font-size:13px"> User is warned about the connection failure <i>(if credentials are incorrect or there is a problem with connection)</i></i></ol>
-<i class="fa fa-wrench" style="font-size:13px"> Program looks for the tables named as <i>"STUDENTS"</i> and <i>"INTERESTS"</i>:</i>
-<ol><i class="fa fa-toggle-on" style="font-size:13px"> If the program detects the tables named as <i>"STUDENTS"</i> and <i>"INTERESTS"</i>, then it aks to drop and recreate or just keep the tables. <i>"Y"</i> to recreate, <i>"N"</i> to skip.</i>
-<i class="fa fa-toggle-off" style="font-size:13px"> If the program do not detects the tables named as <i>"STUDENTS"</i> and <i>"INTERESTS"</i>, then it just creates the tables.</i>
-<i class="fa fa-warning" style="font-size:13px"> User is repeatedly asked to put either "Y" or "N" untill there is no invalid parameter provided </i>
+<ul><i class="fa fa-wrench" style="font-size:13px"> ➤Program asks the user if he/she wants to edit the configuration file which is used to connect to the database</i><ol><i class="fa fa-toggle-on" style="font-size:13px"> ➥If the user presses "+", then the program will ask for the username and password, first to save into config file to retrieve it from there automatically for further runs </i>
+<i class="fa fa-toggle-off" style="font-size:13px">➥If the user presses "-", then the program will directly refer to the config file to retrieve the value from there (<i>null</i> by default)</i>
+<i class="fa fa-warning" style="font-size:13px"> ➥User is repeatedly asked to put either "+" or "-" untill there is no invalid parameter provided </i></ol>
+<i class="fa fa-wrench" style="font-size:13px"> ➤Program asks the user to provide database name for the connection. <i>This will be asked every time in case you would like to have the operation in another database.</i></i>
+<i class="fa fa-wrench" style="font-size:13px"> ➤Program connectst to the database using the credentials provided inside config file and database name provided to the terminal.</i>
+<ol><i class="fa fa-warning" style="font-size:13px"> ➥User is warned about the connection failure <i>(if credentials are incorrect or there is a problem with connection)</i></i></ol>
+<i class="fa fa-wrench" style="font-size:13px"> ➤Program looks for the tables named as <i>"STUDENTS"</i> and <i>"INTERESTS"</i>:</i>
+<ol><i class="fa fa-toggle-on" style="font-size:13px"> ➥If the program detects the tables named as <i>"STUDENTS"</i> and <i>"INTERESTS"</i>, then it aks to drop and recreate or just keep the tables. <i>"Y"</i> to recreate, <i>"N"</i> to skip.</i>
+<i class="fa fa-toggle-off" style="font-size:13px"> ➥If the program do not detects the tables named as <i>"STUDENTS"</i> and <i>"INTERESTS"</i>, then it just creates the tables.</i>
+<i class="fa fa-warning" style="font-size:13px"> ➥User is repeatedly asked to put either "Y" or "N" untill there is no invalid parameter provided </i>
 </ol>
-<i class="fa fa-wrench" style="font-size:13px"> Program prints the tables named as  <i>"STUDENTS"</i> and <i>"INTERESTS"</i>. <i>The program uses a seperate class which dynamically prints the tables. It is not staticly programmed to print the specific tables.</i></i>
-<ol><i class="fa fa-warning" style="font-size:13px"> User is warned about the error if there is any <i>(with the specific error message)</i></i></ol>
-<i class="fa fa-wrench" style="font-size:13px"> Program asks for the specific action to take:</i>
-<ol><i class="fa fa-database" style="font-size:13px"><i> end</i> to stop the running app and leave</i>
-<i class="fa fa-database" style="font-size:13px"> <i> migrate</i> to call for the migration class and perform changes on the database the</i>
-<ol><i class="fa fa-sticky-note" style="font-size:13px"> If migration has been performed before and you haven't performed a rollback function before you do the migrate again, then you will get the error which also handles itself. The program clears the action performed after migrate is called second time to avoid unneccessary tables. <i>Just simply perform rollback operation to overcome.</i></i>
-<i class="fa fa-warning" style="font-size:13px"> User is warned about error happenend during the migration process if there is any <i>(with the specific error message)</i>.</i></ol>
-<i class="fa fa-database" style="font-size:13px"><i> rollback</i> to call for the rollback class to revert the changes made</i>
-<ol><i class="fa fa-warning" style="font-size:13px"> User is warned about error happenend during the rollback process if there is any <i>(with the specific error message)</i>.</i></ol>
-<i class="fa fa-warning" style="font-size:13px"> User is repeatedly asked to put one of these: <i>"end"</i>, <i>"migrate"</i>, <i>"rollback"</i> untill there is no invalid parameter provided </i>
+<i class="fa fa-wrench" style="font-size:13px"> ➤Program prints the tables named as  <i>"STUDENTS"</i> and <i>"INTERESTS"</i>. <i>The program uses a seperate class which dynamically prints the tables. It is not staticly programmed to print the specific tables.</i></i>
+<ol><i class="fa fa-warning" style="font-size:13px"> ➥User is warned about the error if there is any <i>(with the specific error message)</i></i></ol>
+<i class="fa fa-wrench" style="font-size:13px"> ➤Program asks for the specific action to take:</i>
+<ol><i class="fa fa-database" style="font-size:13px">➥<i> end</i> to stop the running app and leave</i>
+<i class="fa fa-database" style="font-size:13px"> ➥<i> migrate</i> to call for the migration class and perform changes on the database the</i>
+<ol><i class="fa fa-sticky-note" style="font-size:13px"> ➧If migration has been performed before and you haven't performed a rollback function before you do the migrate again, then you will get the error which also handles itself. The program clears the action performed after migrate is called second time to avoid unneccessary tables. <i>Just simply perform rollback operation to overcome.</i></i>
+<i class="fa fa-warning" style="font-size:13px"> ➧User is warned about error happenend during the migration process if there is any <i>(with the specific error message)</i>.</i></ol>
+<i class="fa fa-database" style="font-size:13px">➥<i> rollback</i> to call for the rollback class to revert the changes made</i>
+<ol><i class="fa fa-warning" style="font-size:13px"> ➧User is warned about error happenend during the rollback process if there is any <i>(with the specific error message)</i>.</i></ol>
+<i class="fa fa-warning" style="font-size:13px"> ➥User is repeatedly asked to put one of these: <i>"end"</i>, <i>"migrate"</i>, <i>"rollback"</i> untill there is no invalid parameter provided </i>
 </ol></ul>
 
 <h4><i class="fa fa-bookmark" style="font-size:13px"></i> How to run the program?:</h4><ol>
-<i>Each picture will be provided by the drive if there is any issue</i>
+<i>Pictures are clickable!</i>
 
-<i class="fa fa-terminal" style="font-size:15px"> We just simply clone the project and go into the directory</i>
+<i class="fa fa-terminal" style="font-size:15px"> ➤We just simply clone the project and go into the directory</i>
 
 ![CloneRepo](https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/70825602-b01a-468d-98b8-aba505f03a45)
 
@@ -90,7 +89,7 @@ Reference:
   
   cd 2024-a1-db-migration-FaridM5
 ```
-<i class="fa fa-terminal" style="font-size:15px"> Before this command executed, the gradlew file should look unexecutable. By doing so, we define a permission to a file to be executable.</i>
+<i class="fa fa-terminal" style="font-size:15px"> ➤Before this command executed, the gradlew file should look unexecutable. By doing so, we define a permission to a file to be executable.</i>
 
 ![Chmod](https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/9219916d-7f17-427c-8d89-60e0a5d189c9)
 
@@ -99,7 +98,7 @@ Reference:
 ```
 
 <i class="fa fa-terminal" style="font-size:15px">  
-We just use <i>run</i> task that will handle both building and running part itself. </br>
+➤We just use <i>run</i> task that will handle both building and running part itself. </br>
 We just finished running part of the app which is as easy as it is and do not require you to put more effort :)
 <i></i></i>
 
@@ -109,36 +108,36 @@ We just finished running part of the app which is as easy as it is and do not re
   ./gradlew run
 ```
 </ol><br>
-<i class="fa fa-mortar-board" style="font-size:13px">As I stated before, the program will handle everything itself. Whether you want to change the credentials in the config file, you want to end the app, do migrate or rollback. You just read what the program tells you and puts the required input to wait for it to handle the process. No other script execution things for different processes are needed</i>
+<i class="fa fa-mortar-board" style="font-size:13px">➤As I stated before, the program will handle everything itself. Whether you want to change the credentials in the config file, you want to end the app, do migrate or rollback. You just read what the program tells you and puts the required input to wait for it to handle the process. No other script execution things for different processes are needed</i>
 
 <h4><i class="fa fa-bookmark" style="font-size:13px"></i> Some pictures from the process:</h4>
 <ol>
 <i class="fa fa-terminal" style="font-size:15px">  
-When the user inserts invalid credentials to connect to the database (<i>Note that if the user puts invalid credentials it will be saved into the config file. So, you need to put + as an input when the program asks for the editing config file. By doing so, you can provide the correct credentials</i>):
+➤When the user inserts invalid credentials to connect to the database (<i>Note that if the user puts invalid credentials it will be saved into the config file. So, you need to put + as an input when the program asks for the editing config file. By doing so, you can provide the correct credentials</i>):
 <i></i></i>
 
 ![DBConnectionProcessPicture](https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/5ee1bbef-19f9-43a2-927e-62d559374c2c)
 
 <i class="fa fa-terminal" style="font-size:15px">  
-The case where the tables already exists and recreates them <i>(if not exists just creates)</i>
+➤The case where the tables already exists and recreates them <i>(if not exists just creates)</i>
 </i>
 
 ![TableCreationProcess](https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/3f29bae0-55f7-43b0-8ad9-cd08d1a1c60b)
 
 <i class="fa fa-terminal" style="font-size:15px">  
-<i> Migration</i> process
+<i> ➤Migration</i> process
 </i>
 
 ![MigrationProcessPicture](https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/97be5c1c-8f17-46f8-a53d-8573eb530a19)
 
 <i class="fa fa-terminal" style="font-size:15px">  
-<i> Rollback </i> process
+<i> ➤Rollback </i> process
 </i>
 
 ![RollbackProcessPicture](https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/c7469b70-bf1c-42b3-b9f7-7369623c3b80)
 
 <i class="fa fa-terminal" style="font-size:15px">  
-<i> End </i> process
+<i> ➤End </i> process
 </i>
 
 ![EndProcessPicture](https://github.com/ADA-GWU/2024-a1-db-migration-FaridM5/assets/67589966/edbddf01-30a1-4fbc-bc6a-ac064b18fe60)
